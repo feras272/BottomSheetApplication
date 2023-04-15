@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooseScaleDetailsFragment">
+
+    <fragment
+        android:id="@+id/chooseScaleDetailsFragment"
+        android:name="com.ferasdev.bottomsheetapplication.ChooseScaleDetailsFragment"
+        android:label="fragment_choose_scale_details"
+        tools:layout="@layout/fragment_choose_scale_details" >
+        <action
+            android:id="@+id/action_chooseScaleDetailsFragment_to_scaleDetailFragment"
+            app:destination="@id/scaleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scaleDetailFragment"
+        android:name="com.ferasdev.bottomsheetapplication.ScaleDetailFragment"
+        android:label="fragment_scale_detail"
+        tools:layout="@layout/fragment_scale_detail" />
+</navigation>

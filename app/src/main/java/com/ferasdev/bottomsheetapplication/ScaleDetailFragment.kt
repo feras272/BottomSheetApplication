@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.ferasdev.bottomsheetapplication.databinding.FragmentScaleDetailBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +20,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ScaleDetailFragment : Fragment() {
+
+    private lateinit var binding: FragmentScaleDetailBinding
+    private lateinit var scaleDialog: BottomSheetDialog
+    private lateinit var scaleItemAdapter: ScaleItemAdapter
+    private val scaleList = ArrayList<ScaleItem>()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var content:String
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +45,47 @@ class ScaleDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scale_detail, container, false)
+        binding = FragmentScaleDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        content = "Quisque pretium arcu a dolor aliquam sollicitudin. " +
+                "Integer eget lorem venenatis, imperdiet nunc sed, placerat lectus. " +
+                "Pellentesque laoreet a nibh a ultrices. " +
+                "Duis laoreet, orci ac convallis feugiat, " +
+                "ante sem blandit sem, eget pellentesque mauris mi a erat. " +
+                "Phasellus quis nisi sodales, fermentum neque sed, mattis ante. " +
+                "Mauris vehicula elit eu erat semper viverra non in urna. " +
+                "Nunc sem eros, euismod pharetra molestie et, lacinia in lacus.\n" +
+                "Quisque suscipit justo ac ligula porta, vel ullamcorper odio ullamcorper. " +
+                "Morbi pretium tellus ultrices leo tincidunt, quis aliquam mauris feugiat. " +
+                "In erat leo, dapibus non neque sed, fermentum pharetra nibh. " +
+                "Morbi sit amet volutpat diam, ac rhoncus tortor. " +
+                "Fusce at arcu vehicula, commodo felis ac, volutpat nibh. " +
+                "Nam viverra fermentum libero nec pellentesque. In hac habitasse platea dictumst."
+
+        for (i in 1..10) {
+            scaleList.add(ScaleItem("Item $i",R.drawable.ic_arrow_down, content))
+        }
+
+        binding.tvSelectItemFragmentScaleDetail.setOnClickListener {
+            showScaleBottomSheet()
+
+        }
+
+
+
+        return view
+        //inflater.inflate(R.layout.fragment_scale_detail, container, false)
+    }
+
+    private fun showScaleBottomSheet() {
+        val dialogView = layoutInflater.inflate(R.layout.scale_bottom_sheet, null)
+        scaleDialog = BottomSheetDialog(requireContext()) // R.style.ScaleBottomSheetDialogThem
+        scaleDialog.setContentView(dialogView)
+        recyclerView = dialogView.findViewById(R.id.rv_item_scale_bottom_sheet)
+        scaleItemAdapter = ScaleItemAdapter(scaleList)
+        recyclerView.adapter = scaleItemAdapter
+        scaleDialog.show()
     }
 
     companion object {

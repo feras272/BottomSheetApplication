@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.ferasdev.bottomsheetapplication.databinding.FragmentChooseScaleDetailsBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ChooseScaleDetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentChooseScaleDetailsBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +39,15 @@ class ChooseScaleDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_choose_scale_details, container, false)
+        binding = FragmentChooseScaleDetailsBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        binding.tvOpenSecondPage.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_chooseScaleDetailsFragment_to_scaleDetailFragment)
+        }
+
+        return view
+        //inflater.inflate(R.layout.fragment_choose_scale_details, container, false)
     }
 
     companion object {

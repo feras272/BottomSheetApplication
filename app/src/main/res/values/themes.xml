@@ -14,12 +14,21 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    
-<!--    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">-->
-<!--        <item name="android:background">@android:color/transparent</item>-->
-<!--    </style>-->
-    
-<!--    <style name="ScaleBottomSheetDialogThem" parent="Theme.Design.BottomSheetDialog">-->
-<!--        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>-->
-<!--    </style>-->
+
+    <style name="Theme.BottomSheetApplication.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.BottomSheetApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.BottomSheetApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">-->
+    <!--        <item name="android:background">@android:color/transparent</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="ScaleBottomSheetDialogThem" parent="Theme.Design.BottomSheetDialog">-->
+    <!--        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>-->
+    <!--    </style>-->
 </resources>
